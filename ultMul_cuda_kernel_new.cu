@@ -7,7 +7,7 @@
 #include <vector>
 #include <limits.h>
 #include <algorithm>
-
+/*
 // get element of matrix A at [row, col]
 template <typename scalar_t>
 __device__ __forceinline__ scalar_t getElement(scalar_t* M, unsigned int row, unsigned int col, size_t width)
@@ -22,7 +22,7 @@ __device__ __forceinline__ void setElement(scalar_t* M, unsigned int row, unsign
 {
 	M[row * width + col] = v;
 }
-
+*/
 
 // kernel function for ultrametric matrix multiplication
 template <typename scalar_t>
@@ -40,12 +40,13 @@ __global__ void ultMul_cuda_kernel(
     {
         for (int i = 0; i < k; ++i)
         {
-            temp = fmaxf(getElement(A, row, i, k), getElement(B, i, col, n));
+            //temp = fmaxf(getElement(A, row, i, k), getElement(B, i, col, n));
+            temp = fmaxf(A[row * k + i], B[i * n + col]);
             elmt = fminf(elmt, temp);
         }
-        setElement(C, row, col, n, elmt);
+        //setElement(C, row, col, n, elmt);
+        C[row * n + col] = elmt;
     }
-    
 }
 
 
