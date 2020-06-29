@@ -1,7 +1,7 @@
 # Parallel-Ultrametric 
 > This package implements a new matrix multiplication method that can transfer an arbitary dissimilarity matrix into an ultrametric distance matrix. Based on this method, this package also implements two GPU based functions as follows:
-* data clusterability: Defined as the degree of the hardness of the transfer process. 
-* Single-linkage hierarchical clustering: The final ultrametric distance matrix can generate a hierarchical structure on the dataset. Such structure is identical to that from the single-linkage hierarchical clustering.  
+* Data Clusterability: Defined as the degree of the hardness of the transfer process. 
+* Parallel Hierarchical Clustering: The final ultrametric distance matrix can generate a hierarchical structure on the dataset. Such structure is identical to that from the single-linkage hierarchical clustering.  
 
 The whole package is coded in CUDA and C++ and embeded with PyTorch. 
 
@@ -17,7 +17,23 @@ You have to make sure your device is installed with the newest version of PyTorc
 * [Future Work](#future-work)
 
 ## General info
-Add more general information about project. What the purpose of the project is? Motivation?
+Clustering is the prototypical unsupervised learning activity. It helps users to indentify cohesive and well-differentiated groups of records in data. In big data era, two main problems challenge users to apply clustering in practical scenario. The first is to determine whether a data set has non-random structure. The second is the fast clustering algorithm. 
+
+Running clustering algorithm is expensive. If there are no meaningful well-differentiated groups in data, or say **not clusterable**, then it will be useless to execute clustering algorithm on such dataset. Developing a scale to determine whether a dataset is clusterable or say the **clusterability** of a dataset is an important issue. 
+
+Since running clustering algorithms are expensive, especially for the linkage-based hierarchical clustering algorithms. Even if we can determine there's meaningful structure inside the dataset, we still hope to get such clustering result quickly. 
+
+In this package, we developed a new matrix multiplication method that can transfer any dissimilarity matrix to a special ultrametic distance matrix. We adopt this techniques to deal with the problems above.
+
+### Ultrametric
+The ultrametric is a special metric that has a stronger triangle inequality property:
+
+$\any x,y,z, d(x,y) \leq max(d(y,z), d(x,z))$
+
+Tansitive distance is a special ultrametric. It define the pairwise distance as the minimum hop (edge) of the set of largest edges along all possible connecting paths between two data points.
+
+Definition
+$$
 
 ## Prerequisite
 * Python 3.5 and above
