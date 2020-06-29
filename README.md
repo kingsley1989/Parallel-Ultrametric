@@ -30,14 +30,36 @@ In general, for a given dissimilarity matrix, this package can provide an extrem
 ### Ultrametric
 The ultrametric is a special metric that has a stronger triangle inequality property:
 
-$\forall x,y,z, d(x,y) \leq max\{d(y,z), d(x,z)\}$
+$\forall x,y,z d(x,y)\leqslant max\{d(y,z), d(x,z)\}$
 <!-- ![](https://latex.codecogs.com/png.latex?\forall&space;x,y,z,d(x,y)\leq&space;max\{d(x,z),d(y,z)\}) -->
 
-Tansitive distance is a special ultrametric. It define the pairwise distance as the minimum hop (edge) of the set of largest edges along all possible connecting paths between two data points.
+Tansitive distance is a special ultrametric. It defines the pairwise distance as the minimum hop (edge) of the set of largest edges along all possible connecting paths between two data points.
+
+**Definition 1**
 
 $TD(x,y) = min_{\mathbf{P}\in \mathbb{P}} max_{e\in \mathbf{P}} (d(e))$
 
+### A Special Matrix Product
+Let $\mathbb{P}_\infty = \{x\in\mathbb{R}|x\geqslant 0\}\cup\{\infty\}$
 
+Suppose $A\in \mathbb{P}_\infty^{m\times n}, B\in \mathbb{P}_\infty^{n\times p}$,
+
+**Definition 2**
+
+$C = A\oplus B\in\mathbb{P}_\infty^{m\times p}$ such that,
+
+$c_{ij} = min\{max\{a_{ik}, b_{kj}\}|1\leqslant k\leqslant n\}$
+
+**Definition 3**
+
+$A\preccurlyeq B$ if $a_{ij}\geqslant b_{ij}$
+
+**Theorem 1**
+If $A\in\mathbb{P}^{n\times n}$ is a dissimilarity matrix, there exists $m\in\mathbb{N}$ such that 
+
+$A\preccurlyeq A^2\preccurlyeq\cdots\preccurlyeq A^m = A^{m+1}=\cdots = A^{m+d}, \forall d>0$
+
+and $A^m$ is an *ultrametric matrix*
 
 ## Prerequisite
 * Python 3.5 and above
