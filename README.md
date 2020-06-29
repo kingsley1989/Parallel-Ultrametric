@@ -30,7 +30,7 @@ In general, for a given dissimilarity matrix, this package can provide an extrem
 ### Ultrametric
 The ultrametric is a special metric that has a stronger triangle inequality property:
 
-![](https://latex.codecogs.com/gif.latex?\forall&space;x,y,z,d(x,y)\leq&space;max/{d(x,z),d(y,z)/})
+![](https://latex.codecogs.com/png.latex?\forall&space;x,y,z,d(x,y)\leq&space;max\{d(x,z),d(y,z)\})
 
 Tansitive distance is a special ultrametric. It define the pairwise distance as the minimum hop (edge) of the set of largest edges along all possible connecting paths between two data points.
 
