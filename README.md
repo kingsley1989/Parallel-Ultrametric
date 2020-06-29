@@ -69,17 +69,20 @@ Let $A\preceq B$ if $a_{ij}\geq b_{ij}$
 
 > Let $A\in\mathbb{P}^{n\times n}$ be the dissimilarity matrix of dataset $S$ and $m(A)$ is the least integer that $A^m$ is the ultrametric matrix, then the **ultrametricity** of $A$ $u(A)=\frac{n}{m}$
 
-We refer tp $m(A)$ as the *stabilization power* of the matrix $A$.
+We refer to $m(A)$ as the *stabilization power* of the matrix $A$.
 
 If $m(A)=1$, $A$ is ultrametric itself and $u(A)=n$.
 
-Let $A_D$ as the dissimilarity matrix of a data set $D$.
-
 ***Definition 4***
 
+> Let $A_D$ as the dissimilarity matrix of a data set $D$.
+> 
 > The **clusterability** of a data set $D$
 > 
 > $\mathtt{clust}(D) = u(A_D) = \frac{n}{m(A_D)}$
+
+### subdominant ultrametric and single-link hierarchical clustering
+
 
 ## Prerequisite
 * Python 3.5 and above
