@@ -35,7 +35,7 @@ $$\forall x,y,z\ d(x,y)\leq max\lbrace d(y,z), d(x,z)\rbrace$$
 
 Tansitive distance is a special ultrametric. It defines the pairwise distance as the minimum hop (edge) of the set of largest edges along all possible connecting paths between two data points.
 
-**Definition 1** 
+***Definition 1*** 
 
 > $$TD(x,y) = \min_{\mathcal{P}\in \mathbb{P}} \max_{e\in \mathcal{P}} (d(e))$$
 
@@ -48,7 +48,7 @@ Suppose $A\in\mathbb{P}_\infty^{m\times n}$ and
 
 $B\in\mathbb{P}_\infty^{n\times p}$
 
-**Definition 2**
+***Definition 2***
 
 >$C = A\otimes B\in\mathbb{P}_\infty^{m\times p}$ such that,
 >
@@ -56,7 +56,7 @@ $B\in\mathbb{P}_\infty^{n\times p}$
 
 Let $A\preceq B$ if $a_{ij}\geq b_{ij}$
 
-**Theorem 1**
+***Theorem 1***
  
 > If $A\in\mathbb{P}^{n\times n}$ is a dissimilarity matrix, there exists $m\in\mathbb{N}$ such that
 >
