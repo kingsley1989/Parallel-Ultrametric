@@ -100,12 +100,11 @@ From [4, 5, 6, 7], we can conclude that the cophenetic distance matrix $C$ of si
 ## Prerequisite
 * Python 3.5 and above
 * CUDA 9 and above
-* C++
+* PyTorch 1.0 and above
 
 ## Setup
 ```python
 import torch
-import sklearn.metrics.pairwise as sk_dist
 from torch.utils.cpp_extension import load
 
 if torch.cuda.is_available():
@@ -139,7 +138,7 @@ The detailed demo examples can refer ult_test.ipynb for more information
 
 > [7] Chierchia, G., & Perret, B. (2019). Ultrametric fitting by gradient descent. In Advances in neural information processing systems (pp. 3181-3192).
 ## Future Work
-Project is: _in progress_, _finished_, _no longer continue_ and why?
+This work only fits for one GPU calculation. The next step should focus on multi-GPU work. The multi-GPU calculation can demonstrate the algorithm's best advantage.
 
 
 
