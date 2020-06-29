@@ -42,10 +42,9 @@ Tansitive distance is a special ultrametric. It defines the pairwise distance as
 Here $\mathcal{P}$ is a single path from point x to y, while $\mathbb{P}$ represents the set of all possible paths from point x to y.
 
 ### A Special Matrix Product
-Let $\mathbb{P}_\infty = \lbrace x\in\mathbb{R}|x\geq 0\rbrace \cup\lbrace\infty\rbrace$
+Let $\mathbb{P}_\infty = \lbrace x\in\mathbb{R}|x\geq 0\rbrace \cup\lbrace\infty\rbrace$.
 
-Suppose $A\in\mathbb{P}_\infty^{m\times n}$ and 
-$B\in\mathbb{P}_\infty^{n\times p}$,
+Suppose $A\in\mathbb{P}_\infty^{m\times n}$ and $B\in\mathbb{P}_\infty^{n\times p}$, we have:
 
 ***Definition 2***
 
