@@ -30,34 +30,37 @@ In general, for a given dissimilarity matrix, this package can provide an extrem
 ### Ultrametric
 The ultrametric is a special metric that has a stronger triangle inequality property:
 
-$\forall x,y,z d(x,y)\leq max\lbrace d(y,z), d(x,z)\rbrace$
+$$\forall x,y,z\ d(x,y)\leq max\lbrace d(y,z), d(x,z)\rbrace$$
 <!-- ![](https://latex.codecogs.com/png.latex?\forall&space;x,y,z,d(x,y)\leq&space;max\{d(x,z),d(y,z)\}) -->
 
 Tansitive distance is a special ultrametric. It defines the pairwise distance as the minimum hop (edge) of the set of largest edges along all possible connecting paths between two data points.
 
 **Definition 1** 
 
-$TD(x,y) = \min_{\mathbf{P}\in \mathbb{P}} \max_{e\in \mathbf{P}} (d(e))$
+> $$TD(x,y) = \min_{\mathbf{P}\in \mathbb{P}} \max_{e\in \mathbf{P}} (d(e))$$
 
 ### A Special Matrix Product
 Let $\mathbb{P}_\infty = \lbrace x\in\mathbb{R}|x\geq 0\rbrace \cup\lbrace\infty\rbrace$
 
-Suppose $A\in\mathbb{P}_\infty^{m\times n}, B\in \mathbb{P}_\infty^{n\times p}$,
+Suppose 
+$A\in\mathbb{P}_\infty^{m\times n}, B\in\mathbb{P}_\infty^{n\times p}$,
 
 **Definition 2**
 
-$C = A\otimes B\in\mathbb{P}_\infty^{m\times p}$ such that,
-
-$c_{ij} = \min\lbrace max\lbrace a_{ik}, b_{kj}\rbrace |1\leq k\leq n\rbrace$
+>$C = A\otimes B\in\mathbb{P}_\infty^{m\times p}$ such that,
+>
+>$c_{ij} = \min\lbrace max\lbrace a_{ik}, b_{kj}\rbrace |1\leq k\leq n\rbrace$
 
 **Definition 3**
 
-$A\preceq B$ if $a_{ij}\geq b_{ij}$
+>$A\preceq B$ if $a_{ij}\geq b_{ij}$
 
-> **Theorem 1**
-> 
-> If $A\in\mathbb{P}^{n\times n}$ is a dissimilarity matrix, there exists $m\in\mathbb{N}$ such that 
+**Theorem 1**
+ 
+> If $A\in\mathbb{P}^{n\times n}$ is a dissimilarity matrix, there exists $m\in\mathbb{N}$ such that
+>
 > $A\preceq A^2\preceq\cdots\preceq A^m = A^{m+1}=\cdots = A^{m+d}, \forall d>0$
+>
 > and $A^m$ is an *ultrametric matrix*
 
 ## Prerequisite
