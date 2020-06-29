@@ -42,8 +42,9 @@ Tansitive distance is a special ultrametric. It defines the pairwise distance as
 ### A Special Matrix Product
 Let $\mathbb{P}_\infty = \lbrace x\in\mathbb{R}|x\geq 0\rbrace \cup\lbrace\infty\rbrace$
 
-Suppose 
-$A\in\mathbb{P}_\infty^{m\times n}, B\in\mathbb{P}_\infty^{n\times p}$,
+Suppose
+
+$A\in\mathbb{P}_\infty^{m\times n}$
 
 **Definition 2**
 
@@ -51,9 +52,7 @@ $A\in\mathbb{P}_\infty^{m\times n}, B\in\mathbb{P}_\infty^{n\times p}$,
 >
 >$c_{ij} = \min\lbrace max\lbrace a_{ik}, b_{kj}\rbrace |1\leq k\leq n\rbrace$
 
-**Definition 3**
-
->$A\preceq B$ if $a_{ij}\geq b_{ij}$
+Let $A\preceq B$ if $a_{ij}\geq b_{ij}$
 
 **Theorem 1**
  
