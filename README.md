@@ -45,8 +45,7 @@ Here $\mathcal{P}$ is a single path from point x to y, while $\mathbb{P}$ repres
 Let $\mathbb{P}_\infty = \lbrace x\in\mathbb{R}|x\geq 0\rbrace \cup\lbrace\infty\rbrace$
 
 Suppose $A\in\mathbb{P}_\infty^{m\times n}$ and 
-
-$B\in\mathbb{P}_\infty^{n\times p}$
+$B\in\mathbb{P}_\infty^{n\times p}$,
 
 ***Definition 2***
 
