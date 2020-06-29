@@ -35,7 +35,7 @@ The ultrametric is a special metric that has a stronger triangle inequality prop
 Tansitive distance is a special ultrametric. It define the pairwise distance as the minimum hop (edge) of the set of largest edges along all possible connecting paths between two data points.
 
 Definition
-$td(x,y) = min_{\mathbf{P}\in \mathbb{P}} max_{e\in \mathbf{P}} (d(e))$
+$TD(x,y) = min_{\mathbf{P}\in \mathbb{P}} max_{e\in \mathbf{P}} (d(e))$
 
 ## Prerequisite
 * Python 3.5 and above
