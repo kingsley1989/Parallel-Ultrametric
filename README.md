@@ -45,13 +45,17 @@ Let $\mathbb{P}_\infty = \lbrace x\in\mathbb{R}|x\geq 0\rbrace \cup\lbrace\infty
 Suppose $A\in\mathbb{P}_\infty^{m\times n}, B\in \mathbb{P}_\infty^{n\times p}$,
 
 **Definition 2**
-$C = A\otimes B\in\mathbb{P}_\infty^{m\times p}$ such that,
-> $c_{ij} = \min\lbrace max\lbrace a_{ik}, b_{kj}\rbrace |1\leq k\leq n\rbrace$
 
-> **Definition 3**
-> $A\preceq B$ if $a_{ij}\geq b_{ij}$
+$C = A\otimes B\in\mathbb{P}_\infty^{m\times p}$ such that,
+
+$c_{ij} = \min\lbrace max\lbrace a_{ik}, b_{kj}\rbrace |1\leq k\leq n\rbrace$
+
+**Definition 3**
+
+$A\preceq B$ if $a_{ij}\geq b_{ij}$
 
 > **Theorem 1**
+> 
 > If $A\in\mathbb{P}^{n\times n}$ is a dissimilarity matrix, there exists $m\in\mathbb{N}$ such that 
 > $A\preceq A^2\preceq\cdots\preceq A^m = A^{m+1}=\cdots = A^{m+d}, \forall d>0$
 > and $A^m$ is an *ultrametric matrix*
