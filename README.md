@@ -45,7 +45,7 @@ Here $\mathcal{P}$ is a single path from point x to y, while $\mathbb{P}$ repres
 Let $\mathbb{P}_\infty = \lbrace x\in\mathbb{R}|x\geq 0\rbrace \cup\lbrace\infty\rbrace$.
 
 Suppose $A\in \mathbb{P}_{\infty}^{m\times n}$ and 
- 
+
 $B\in \mathbb{P}_{\infty}^{n\times l}$, we have:
 
 ***Definition 2***
@@ -66,8 +66,20 @@ Let $A\preceq B$ if $a_{ij}\geq b_{ij}$
 
 ### Ultrametricity and Clusterability
 ***Definition 3***
-Let $A\in\mathbb{P}^{n\times n}$ be the dissimilarity matrix of dataset $S$ and $m(A)$ is the least integer that $A^m$ is the ultrametric matrix, then the **ultrametricity** of $A$ $u(A)=\frac{n}{m}$
 
+> Let $A\in\mathbb{P}^{n\times n}$ be the dissimilarity matrix of dataset $S$ and $m(A)$ is the least integer that $A^m$ is the ultrametric matrix, then the **ultrametricity** of $A$ $u(A)=\frac{n}{m}$
+
+We refer tp $m(A)$ as the *stabilization power* of the matrix $A$.
+
+If $m(A)=1$, $A$ is ultrametric itself and $u(A)=n$.
+
+Let $A_D$ as the dissimilarity matrix of a data set $D$.
+
+***Definition 4***
+
+> The **clusterability** of a data set $D$
+> 
+> $\mathtt{clust}(D) = u(A_D) = \frac{n}{m(A_D)}$
 
 ## Prerequisite
 * Python 3.5 and above
