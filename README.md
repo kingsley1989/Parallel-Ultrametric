@@ -13,7 +13,7 @@ You have to make sure your device is installed with the newest version of PyTorc
 * [Prerequisite](#prerequisite)
 * [Setup](#setup)
 * [Demo Examples](#demo-examples)
-* [Features](#features)
+* [Reference](#reference)
 * [Future Work](#future-work)
 
 ## General info
@@ -28,6 +28,8 @@ In this package, we developed a new matrix multiplication method that can transf
 In general, for a given dissimilarity matrix, this package can provide an extremely fast process from checking meaningful clustering structure to the final hierarchical clustering result.
 
 ### Ultrametric
+Detailed introduction of ultrametric could refer to [1] and [2].
+
 The ultrametric is a special metric that has a stronger triangle inequality property:
 
 $$\forall x,y,z\ d(x,y)\leq max\lbrace d(y,z), d(x,z)\rbrace$$
@@ -42,6 +44,8 @@ Tansitive distance is a special ultrametric. It defines the pairwise distance as
 Here $\mathcal{P}$ is a single path from point x to y, while $\mathbb{P}$ represents the set of all possible paths from point x to y.
 
 ### A Special Matrix Product
+This and the next two sections could refer to [3] for detailed prove and illustration.
+
 Let $\mathbb{P}_\infty = \lbrace x\in\mathbb{R}|x\geq 0\rbrace \cup\lbrace\infty\rbrace$.
 
 Suppose $A\in \mathbb{P}_{\infty}^{m\times n}$ and 
@@ -81,9 +85,18 @@ If $m(A)=1$, $A$ is ultrametric itself and $u(A)=n$.
 > 
 > $\mathtt{clust}(D) = u(A_D) = \frac{n}{m(A_D)}$
 
-### subdominant ultrametric and single-link hierarchical clustering
+### Subdominant Ultrametric and Single-link Hierarchical Clustering
+***Theorem 2***
 
+> Let $(D, d)$ as the dissimilarity space, $A$ is the dissimilarity matrix, and $m$ is the stabilization power. 
+> 
+> Then, the new dissimilarity $d'$ with the dissimilarity matrix $A^m$ is the **subdominant ultrametric** for $d$.
 
+From [4, 5, 6, 7], we can conclude that the cophenetic distance matrix $C$ of single-linkage hierarchical clustering on data set $D$ is identical to its subdominant ultrametric distance matrix $A^m$.
+<!-- 4 for subdominant definition on min-max conn to transtive dist-->
+<!-- 5 connect mst to single-link-->
+<!-- 6 connect trans dist to mst-->
+<!-- 7 is the newest work on ultra-->
 ## Prerequisite
 * Python 3.5 and above
 * CUDA 9 and above
@@ -111,16 +124,20 @@ um.ultMul
 ## Demo Examples
 The detailed demo examples can refer ult_test.ipynb for more information
 
-## Features
-List of features ready and TODOs for future development
-* Awesome feature 1
-* Awesome feature 2
-* Awesome feature 3
+## Reference
+> [1] Rammal, R., Toulouse, G., & Virasoro, M. A. (1986). Ultrametricity for physicists. Reviews of Modern Physics, 58(3), 765.
 
-To-do list:
-* Wow improvement to be done 1
-* Wow improvement to be done 2
+> [2] Simovici, D. A., Vetro, R., & Hua, K. (2017). Ultrametricity of dissimilarity spaces and its significance for data mining. In Advances in Knowledge Discovery and Management (pp. 141-155). Springer, Cham.
 
+> [3] Simovici, D., & Hua, K. (2019, October). Data ultrametricity and clusterability. In Journal of Physics: Conference Series (Vol. 1334, No. 1, p. 012002). IOP Publishing.
+
+> [4] Bayod, J. M., & Martinez-Maurica, J. (1990). Subdominant ultrametrics. Proceedings of the American Mathematical Society, 109(3), 829-834.
+
+> [5] Gower, J. C., & Ross, G. J. (1969). Minimum spanning trees and single linkage cluster analysis. Journal of the Royal Statistical Society: Series C (Applied Statistics), 18(1), 54-64.
+
+> [6] Yu, Z., Xu, C., Meng, D., Hui, Z., Xiao, F., Liu, W., & Liu, J. (2014). Transitive distance clustering with k-means duality. In Proceedings of the IEEE Conference on Computer Vision and Pattern Recognition (pp. 987-994).
+
+> [7] Chierchia, G., & Perret, B. (2019). Ultrametric fitting by gradient descent. In Advances in neural information processing systems (pp. 3181-3192).
 ## Future Work
 Project is: _in progress_, _finished_, _no longer continue_ and why?
 
