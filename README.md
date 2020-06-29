@@ -37,18 +37,18 @@ Tansitive distance is a special ultrametric. It defines the pairwise distance as
 
 **Definition 1**
 
-$TD(x,y) = min_{\mathbf{P}\in \mathbb{P}} max_{e\in \mathbf{P}} (d(e))$
+$$TD(x,y) = \min_{\mathbf{P}\in \mathbb{P}} \max_{e\in \mathbf{P}} (d(e))$$
 
 ### A Special Matrix Product
-Let $\mathbb{P}_\infty = \{x\in\mathbb{R}|x\geqslant 0\}\cup\{\infty\}$
+Let $\mathbb{P}_\infty = \lbrace x\in\mathbb{R}|x\geqslant 0\rbrace \cup\lbrace\infty\rbrace$
 
 Suppose $A\in \mathbb{P}_\infty^{m\times n}, B\in \mathbb{P}_\infty^{n\times p}$,
 
 **Definition 2**
 
-$C = A\oplus B\in\mathbb{P}_\infty^{m\times p}$ such that,
+$C = A\otimes B\in\mathbb{P}_\infty^{m\times p}$ such that,
 
-$c_{ij} = min\{max\{a_{ik}, b_{kj}\}|1\leqslant k\leqslant n\}$
+$c_{ij} = \min\lbrace max\lbrace a_{ik}, b_{kj}\rbrace |1\leqslant k\leqslant n\rbrace$
 
 **Definition 3**
 
