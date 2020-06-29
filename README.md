@@ -37,14 +37,16 @@ Tansitive distance is a special ultrametric. It defines the pairwise distance as
 
 **Definition 1** 
 
-> $$TD(x,y) = \min_{\mathbf{P}\in \mathbb{P}} \max_{e\in \mathbf{P}} (d(e))$$
+> $$TD(x,y) = \min_{\mathcal{P}\in \mathbb{P}} \max_{e\in \mathcal{P}} (d(e))$$
+
+Here $\mathcal{P}$ is a single path from point x to y, while $\mathbb{P}$ represents the set of all possible paths from point x to y.
 
 ### A Special Matrix Product
 Let $\mathbb{P}_\infty = \lbrace x\in\mathbb{R}|x\geq 0\rbrace \cup\lbrace\infty\rbrace$
 
 Suppose
 
-$A\in\mathbb{P}_\infty^{m\times n}$
+$A\in\mathbb{P}_\infty^{m\times n}$ and $B\in\mathbb{P}_\infty^{n\times p}$
 
 **Definition 2**
 
@@ -61,6 +63,9 @@ Let $A\preceq B$ if $a_{ij}\geq b_{ij}$
 > $A\preceq A^2\preceq\cdots\preceq A^m = A^{m+1}=\cdots = A^{m+d}, \forall d>0$
 >
 > and $A^m$ is an *ultrametric matrix*
+
+### Ultrametricity and Clusterability
+
 
 ## Prerequisite
 * Python 3.5 and above
