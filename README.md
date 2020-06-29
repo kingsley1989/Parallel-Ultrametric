@@ -9,14 +9,40 @@ You have to make sure your device is installed with the newest version of PyTorc
 
 
 ## Table of contents
-* [General info](#general-info)
 * [Prerequisite](#prerequisite)
 * [Setup](#setup)
 * [Demo Examples](#demo-examples)
+* [Background info](#background-info)
 * [Reference](#reference)
 * [Future Work](#future-work)
 
-## General info
+## Prerequisite
+* Python 3.5 and above
+* CUDA 9 and above
+* PyTorch 1.0 and above
+
+## Setup
+```python
+import torch
+from torch.utils.cpp_extension import load
+
+if torch.cuda.is_available():
+    device = torch.device("cuda")
+```
+
+You can use JTL mode of this package as follows:
+
+```python
+ultMul = load(name='ultMul', sources=['ultMul_cuda_new.cpp', 'ultMul_cuda_kernel_new.cu'])
+
+import ultMul as um
+um.ultMul
+```
+
+## Demo Examples
+The detailed demo examples can refer ult_test.ipynb for more information
+
+## Background Info
 Clustering is the prototypical unsupervised learning activity. It helps users to indentify cohesive and well-differentiated groups of records in data. In big data era, two main problems challenge users to apply clustering in practical scenario. The first is to determine whether a data set has non-random structure. The second is the fast clustering algorithm. 
 
 Running clustering algorithm is expensive. If there are no meaningful well-differentiated groups in data, or say **not clusterable**, then it will be useless to execute clustering algorithm on such dataset. Developing a scale to determine whether a dataset is clusterable or say the **clusterability** of a dataset is an important issue. 
@@ -97,31 +123,6 @@ From [4, 5, 6, 7], we can conclude that the cophenetic distance matrix $C$ of si
 <!-- 5 connect mst to single-link-->
 <!-- 6 connect trans dist to mst-->
 <!-- 7 is the newest work on ultra-->
-## Prerequisite
-* Python 3.5 and above
-* CUDA 9 and above
-* PyTorch 1.0 and above
-
-## Setup
-```python
-import torch
-from torch.utils.cpp_extension import load
-
-if torch.cuda.is_available():
-    device = torch.device("cuda")
-```
-
-You can use JTL mode of this package as follows:
-
-```python
-ultMul = load(name='ultMul', sources=['ultMul_cuda_new.cpp', 'ultMul_cuda_kernel_new.cu'])
-
-import ultMul as um
-um.ultMul
-```
-
-## Demo Examples
-The detailed demo examples can refer ult_test.ipynb for more information
 
 ## Reference
 > [1] Rammal, R., Toulouse, G., & Virasoro, M. A. (1986). Ultrametricity for physicists. Reviews of Modern Physics, 58(3), 765.
