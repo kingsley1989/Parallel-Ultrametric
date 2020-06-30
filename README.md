@@ -24,6 +24,7 @@ You have to make sure your device is installed with the newest version of PyTorc
 * PyTorch 1.0 and above
 
 ## Setup
+
 ```python
 import torch
 from torch.utils.cpp_extension import load
@@ -32,7 +33,7 @@ if torch.cuda.is_available():
     device = torch.device("cuda")
 ```
 
-You can use JTL mode of this package as follows:
+You can use JIT mode of this package as follows:
 
 ```python
 ultMul = load(name='ultMul', sources=['ultMul_cuda_new.cpp', 'ultMul_cuda_kernel_new.cu'])
