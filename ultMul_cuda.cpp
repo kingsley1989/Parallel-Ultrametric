@@ -17,7 +17,7 @@ at::Tensor ultMul_cuda
 #define CHECK_CONTIGUOUS(x) AT_ASSERT(x.is_contiguous(), #x " must be contiguous")
 #define CHECK_INPUT(x) CHECK_CUDA(x); CHECK_CONTIGUOUS(x)
 
-torch::Tensor ultMul(torch::Tensor A, torch::Tensor B)
+torch::Tensor ultmul(torch::Tensor A, torch::Tensor B)
 {
 	CHECK_INPUT(A);
 	CHECK_INPUT(B);
@@ -46,7 +46,7 @@ std::vector<torch::Tensor> clusterability(torch::Tensor D)
 
 PYBIND11_MODULE(TORCH_EXTENSION_NAME, m)
 {
-	m.def("ultMul", &ultMul, "ultMul (CUDA)");
+	m.def("ultmul", &ultmul, "ultmul (CUDA)");
 	m.def("clusterability", &clusterability, "clusterability (CUDA)");
 }
 
