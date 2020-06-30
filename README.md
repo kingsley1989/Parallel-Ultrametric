@@ -3,6 +3,8 @@ This package implements a new matrix multiplication method that can transfer an 
 > * Data Clusterability: Defined as the degree of the hardness of the transfer process. 
 > * Parallel Hierarchical Clustering: The final ultrametric distance matrix can generate a hierarchical structure on the dataset. Such structure is identical to that from the single-linkage hierarchical clustering.  
 
+The theorical background can refer to paper: [Data ultrametricity and clusterability](https://iopscience.iop.org/article/10.1088/1742-6596/1334/1/012002/meta)
+
 The whole package is coded in CUDA and C++ and embeded with PyTorch. 
 
 You have to make sure your device is installed with the newest version of PyTorch and CUDA. 
