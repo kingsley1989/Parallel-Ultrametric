@@ -27,7 +27,7 @@ torch::Tensor ultmul(torch::Tensor A, torch::Tensor B)
 
 std::vector<torch::Tensor> clusterability(torch::Tensor D)
 {
-   CHECK_INPUT(D);
+	CHECK_INPUT(D);
 
 	torch::Tensor D_old = D.clone();
 	torch::Tensor D_new = ultMul_cuda(D_old, D);
@@ -42,6 +42,13 @@ std::vector<torch::Tensor> clusterability(torch::Tensor D)
 
 	// i/|D| is the clusterability value and D_new is the sub-dominant ultrametric distance matrix of D.
 	return {torch::tensor({i}), D_new};
+}
+
+torch::Tensor single_hclust(torch::Tensor D, int k)
+{
+	CHECK_INPUT(D);
+	CHECK_INPUT(k);
+	
 }
 
 PYBIND11_MODULE(TORCH_EXTENSION_NAME, m)
