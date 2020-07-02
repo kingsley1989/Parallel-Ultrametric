@@ -49,12 +49,24 @@ torch::Tensor single_hclust(torch::Tensor D, int k)
 	CHECK_INPUT(D);
 	CHECK_INPUT(k);
 	
+	torch::Tensor D_old = D.clone();
+	torch::Tensor D_new = ultMul_cuda(D_old, D);
+
+	while(!torch::all(torch::eq(D_old, D_new)).contiguous().item<bool>())
+	{
+		D_old = D_new.clone();
+		D_new = ultMul_cuda(D_old, D);
+	}
+
+	torch::Tensor X = torch::_unique(D);
+	return X;
 }
 
 PYBIND11_MODULE(TORCH_EXTENSION_NAME, m)
 {
 	m.def("ultmul", &ultmul, "ultmul (CUDA)");
 	m.def("clusterability", &clusterability, "clusterability (CUDA)");
+	m.def("single_hclust", &single_hclust, "single_hclust (CUDA)");
 }
 
 
