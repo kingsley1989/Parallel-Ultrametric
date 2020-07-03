@@ -44,7 +44,7 @@ std::vector<torch::Tensor> clusterability(torch::Tensor D)
 	return {torch::tensor({i}), D_new};
 }
 
-torch::Tensor single_hclust(torch::Tensor D, int k)
+std::vector<torch::Tensor> single_hclust(torch::Tensor D, int k)
 {
 	CHECK_INPUT(D);
 	
@@ -56,10 +56,11 @@ torch::Tensor single_hclust(torch::Tensor D, int k)
 		D_old = D_new.clone();
 		D_new = ultMul_cuda(D_old, D);
 	}
-   //output: first is the sorted result and second is the index
+   //output: first is the sorted result(long list<=D_new.size(0) )and second is the index
 	std::tuple<torch::Tensor, torch::Tensor> X = torch::_unique(D_new, true, true);
-   
-	return std::get<1>(X);
+   torch::Tensor x1 = std::get<0>(X);
+   torch::Tensor Dsub = torch::nonzero(D_new <= x1[-k]).to(torch::kInt));
+	return {x1, Dsub};
 }
 
 PYBIND11_MODULE(TORCH_EXTENSION_NAME, m)
