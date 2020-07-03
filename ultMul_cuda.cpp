@@ -59,7 +59,9 @@ std::vector<torch::Tensor> single_hclust(torch::Tensor D, int k)
    //output: first is the sorted result(long list<=D_new.size(0) )and second is the index
 	std::tuple<torch::Tensor, torch::Tensor> X = torch::_unique(D_new, true, true);
    torch::Tensor x1 = std::get<0>(X);
-   torch::Tensor Dsub = torch::nonzero(D_new <= x1[-k]).to(torch::kInt));
+   torch::Tensor Dsub = torch::nonzero((D_new <= x1[-k]).to(torch::kInt));
+   torch::Tensor clust = torch::empty({1, D.size(0)});
+   for 
 	return {x1, Dsub};
 }
 
