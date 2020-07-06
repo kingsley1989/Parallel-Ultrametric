@@ -33,18 +33,18 @@ std::vector<torch::Tensor> clusterability(torch::Tensor D)
 	torch::Tensor D_new = ultMul_cuda(D_old, D);
 	int i = 1;
 
-	while(!torch::all(torch::eq(D_old, D_new)).contiguous().item<bool>())
+	while(!torch::all(torch::eq(D_new, D_old)).contiguous().item<bool>())
 	{
 		D_old = D_new.clone();
 		D_new = ultMul_cuda(D_old, D);
 		i++;
 	}
 
-	// i/|D| is the clusterability value and D_new is the sub-dominant ultrametric distance matrix of D.
-	return {torch::tensor({i}), D_new};
+	// i/|D| is the clusterability value and D_new is the sub-dominant ultrametric distance matrix of D.torch::tensor({(float)i/D_new.size(0)})
+	return {torch::tensor({((float)i-1)/D_new.size(0)}), D_new};
 }
 
-std::vector<torch::Tensor> single_hclust(torch::Tensor D, int k)
+torch::Tensor single_hclust(torch::Tensor D, int k)
 {
 	CHECK_INPUT(D);
 	//get the sub-dominant ultrametric distance
@@ -56,20 +56,17 @@ std::vector<torch::Tensor> single_hclust(torch::Tensor D, int k)
 		D_new = ultMul_cuda(D_old, D);
 	}
 	//_unique third variable doesn't work
-	std::tuple<torch::Tensor, torch::Tensor> X = torch::_unique(D_new, true, true);
-	torch::Tensor x1 = std::get<0>(X);
+	torch::Tensor val_udist = std::get<0>(torch::_unique(D_new, true, true));
 	//set clust to all zero and nonzero to get the nonassigned points
-	int n = D_new.size(0);
-	torch::Tensor clust = torch::zeros({n}).cuda();
+	torch::Tensor clust = torch::zeros({D_new.size(0)}).cuda();//must have cuda to process
+	
 	int i = 1;
-	bool check = torch::nonzero(clust==0).size(0) != 0;
-   
-	while(torch::nonzero(clust==0).size(0) != 0)//for(int i=1;i<=k;i++)
+	while(torch::nonzero(clust==0).size(0) != 0)
 	{
-		clust.masked_fill_(D_new.select(0,torch::nonzero(clust==0)[0].item<int64_t>())<=x1[-k], i);
+		clust.masked_fill_(D_new.select(0,torch::nonzero(clust==0)[0].item<int64_t>())<=val_udist[-k], i);
 		i++;//i should less than k
 	}
-	return {torch::tensor({i}), clust};
+	return clust;
 }
 
 PYBIND11_MODULE(TORCH_EXTENSION_NAME, m)
