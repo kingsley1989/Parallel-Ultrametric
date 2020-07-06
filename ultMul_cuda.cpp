@@ -50,19 +50,42 @@ std::vector<torch::Tensor> single_hclust(torch::Tensor D, int k)
 	
 	torch::Tensor D_old = D.clone();
 	torch::Tensor D_new = ultMul_cuda(D_old, D);
-
 	while(!torch::all(torch::eq(D_old, D_new)).contiguous().item<bool>())
 	{
 		D_old = D_new.clone();
 		D_new = ultMul_cuda(D_old, D);
 	}
-   //output: first is the sorted result(long list<=D_new.size(0) )and second is the index
+	//output: first is the sorted result(long list<=D_new.size(0) )and second is the index
 	std::tuple<torch::Tensor, torch::Tensor> X = torch::_unique(D_new, true, true);
-   torch::Tensor x1 = std::get<0>(X);
-   torch::Tensor Dsub = torch::nonzero((D_new <= x1[-k]).to(torch::kInt));
-   torch::Tensor clust = torch::empty({1, D.size(0)});
-   for 
-	return {x1, Dsub};
+	torch::Tensor x1 = std::get<0>(X);
+	//torch::Tensor conn = torch::nonzero((D_new <= x1[-k]).to(torch::kInt));
+	//set clust to all zero and nonzero to get the nonassigned points
+	int n = D_new.size(0);
+	torch::Tensor clust = torch::zeros({n}).cuda();//torch::empty({n}).toType(torch::kLong);
+	//total k
+   int i = 1;
+	//int64_t a = torch::nonzero(clust==0)[0].item<int64_t>();
+	//torch::Tensor ball_idx = D_new.select(0,a)<=x1[-k];
+	//clust.masked_fill_(ball_idx, 1);
+   //clust.masked_fill_(D_new.select(0,torch::nonzero(clust==0)[0].item<int64_t>())<=x1[-k], 1);
+	//clust.masked_fill_(D_new.select(0,torch::nonzero(clust==0)[0].item<int64_t>())<=x1[-k], 2);
+   //clust.masked_fill_(D_new.select(0,torch::nonzero(clust==0)[0].item<int64_t>())<=x1[-k], 3);
+   bool check = torch::nonzero(clust==0).size(0) != 0;
+   
+	while(torch::nonzero(clust==0).size(0) != 0)//for(int i=1;i<=k;i++)
+	{
+		//int64_t a = torch::nonzero(clust==0)[0].item<int64_t>();
+		//torch::Tensor ball_idx = D_new.select(0,a)<=x1[-k];
+		//clust.masked_fill_(ball_idx, i);
+		clust.masked_fill_(D_new.select(0,torch::nonzero(clust==0)[0].item<int64_t>())<=x1[-k], i);
+		i++;//i should less than k
+	}
+	//1. check while condition output
+	//2. check nonzero()[0] output
+	//3. check real code for the where function (hard)
+	//4. check torch::zeros work or not
+   
+	return {torch::tensor({i}), clust};
 }
 
 PYBIND11_MODULE(TORCH_EXTENSION_NAME, m)
