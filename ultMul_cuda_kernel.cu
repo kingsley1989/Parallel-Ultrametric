@@ -60,10 +60,10 @@ at::Tensor ultMul_cuda(at::Tensor A, at::Tensor B)
     
     dim3 threads(n, m); //blocksize
     dim3 blocks(1, 1); //gridsize
-    if (m*n > 512)
+    if (m*n > 1024)
     {
-        threads.x = 16;
-        threads.y = 16;
+        threads.x = 32;
+        threads.y = 32;
         blocks.x = ceil(float(n)/float(threads.x));
         blocks.y = ceil(float(m)/float(threads.y));
     }
