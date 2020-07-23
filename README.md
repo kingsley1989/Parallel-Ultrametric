@@ -9,6 +9,7 @@ The whole package is coded in CUDA and C++ and embeded with PyTorch.
 
 You have to make sure your device is installed with the newest version of PyTorch and CUDA. 
 
+The following introduction contains several math formula and I recommand to use the Chrome extension [MathJax for Github](https://chrome.google.com/webstore/detail/mathjax-plugin-for-github/ioemnmodlmafdkllaclgeombjnmnbima) for easy-reading.
 
 ## Table of contents
 * [Prerequisite](#prerequisite)
