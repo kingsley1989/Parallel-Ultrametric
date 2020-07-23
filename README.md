@@ -25,13 +25,13 @@ The following introduction contains several math formula and I recommand to use 
 * PyTorch 1.0 and above
 
 ## Setup
-Go the download package location and run the following command in terminal to setup the package
+Go the download package location and run the following command in terminal to install the package
 
 ```shell
 python3 setup.py install
 ```
 
-You can use JIT mode of this package as follows:
+You can also use JIT mode of this package as follows:
 
 ```python
 import torch
