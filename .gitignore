@@ -1,4 +1,6 @@
 # ignore vscode generated .json files,
 *.json
-# except foo.html which is maintained by hand
-# !foo.html
+# ignore test jupyter notebook files,
+*.ipynb
+# except the following file which is maintained for public testing
+!ult_test.ipynb
