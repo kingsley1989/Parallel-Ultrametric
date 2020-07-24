@@ -1,0 +1,4 @@
+# ignore vscode generated .json files,
+*.json
+# except foo.html which is maintained by hand
+# !foo.html
