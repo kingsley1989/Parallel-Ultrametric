@@ -40,7 +40,7 @@ from torch.utils.cpp_extension import load
 if torch.cuda.is_available():
     device = torch.device("cuda")
 
-ultMul = load(name='ultMul', sources=['ultMul_cuda_new.cpp', 'ultMul_cuda_kernel_new.cu'])
+ultMul = load(name='ultMul', sources=['ultMul_cuda.cpp', 'ultMul_cuda_kernel.cu'])
 
 import ultMul as um
 um.ultMul
